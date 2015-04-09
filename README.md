@@ -9,26 +9,29 @@ Google官方推出了许多扩展的UI公共组件库，在这里，我们介绍
 
 接下来就可以在MainActivity里面进行布局了:
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+``` xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <com.fyales.slidetablayout.SlidingTabLayout
+        android:id="@+id/sliding_tabs"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".MainActivity">
+        android:layout_height="wrap_content" />
 
-        <com.fyales.slidetablayout.SlidingTabLayout
-            android:id="@+id/sliding_tabs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewpager"
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="1"
-            android:background="@android:color/white" />
-
-    </LinearLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:background="@android:color/white" />
+</LinearLayout>
+```
     
     
 然后，写一个基本的Fragment，用于展示:
