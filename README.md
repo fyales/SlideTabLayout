@@ -11,30 +11,33 @@ Google官方推出了许多扩展的UI公共组件库，在这里，我们介绍
 
 ``` xml
 
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
-
-    <com.fyales.slidetablayout.SlidingTabLayout
-        android:id="@+id/sliding_tabs"
+    <?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:layout_weight="1"
-        android:background="@android:color/white" />
-</LinearLayout>
+        <com.fyales.slidetablayout.SlidingTabLayout
+            android:id="@+id/sliding_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:background="@android:color/white" />
+    </LinearLayout>
+
 ```
     
     
 然后，写一个基本的Fragment，用于展示:
+
+``` java
 
     package com.fyales.slidetablayout;
     
@@ -73,7 +76,11 @@ Google官方推出了许多扩展的UI公共组件库，在这里，我们介绍
         }
     }
     
+```
+    
 定义Adapter(继承自FragmentPagerAdapter)，覆写getItem()方法
+
+``` java
 
     package com.fyales.slidetablayout;
     
@@ -115,9 +122,13 @@ Google官方推出了许多扩展的UI公共组件库，在这里，我们介绍
             return  mTabTitle[position];
         }
     }
+    
+```
 
     
 最后我们就可以在MainActivity.java中直接使用了
+
+``` java
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,9 +143,13 @@ Google官方推出了许多扩展的UI公共组件库，在这里，我们介绍
         slidingTabLayout.setViewPager(viewPager);
     }
     
+```
+    
     
 ### 自定义样式和自定义下划线颜色
 SlidingTabLayout同样有一些自定义的方法供你使用，你可以定义下划线的颜色或者自定义样式，通过以下方法调用
+
+``` java
 
         //自定义下划线颜色
         slidingTabLayout.setCustomTabColorizer(new SlidingTabLayout.TabColorizer(){
@@ -146,3 +161,5 @@ SlidingTabLayout同样有一些自定义的方法供你使用，你可以定义�
         
         //自定义展示样式
         slidingTabLayout.setCustomTabView(R.layout.your_custom_tab, 0);
+        
+```
