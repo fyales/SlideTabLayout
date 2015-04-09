@@ -1,5 +1,6 @@
 package com.fyales.slidetablayout;
 
+import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
@@ -18,10 +19,18 @@ public class MainActivity extends FragmentActivity {
         viewPager.setAdapter(new TabViewPagerAdapter(getSupportFragmentManager(),
                 MainActivity.this));
 
-        // Give the SlidingTabLayout the ViewPager
         SlidingTabLayout slidingTabLayout = (SlidingTabLayout) findViewById(R.id.sliding_tabs);
-        // Center the tabs in the layout
+        // slidingTabLayout.setDistributeEvenly(true); 是否填充满屏幕的宽度
         slidingTabLayout.setViewPager(viewPager);
+
+        //自定义下划线颜色
+        slidingTabLayout.setCustomTabColorizer(new SlidingTabLayout.TabColorizer(){
+            @Override
+            public int getIndicatorColor(int position) {
+                return Color.RED;
+            }
+        });
+
     }
 
     @Override
