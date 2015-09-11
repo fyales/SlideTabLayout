@@ -80,55 +80,47 @@ Google官方推出了许多扩展的UI公共组件库，在这里，我们介绍
     
 定义Adapter(继承自FragmentPagerAdapter)，覆写getItem()方法
 
-``` java
 
-    package com.fyales.slidetablayout;
-    
-    import android.content.Context;
-    import android.support.v4.app.Fragment;
-    import android.support.v4.app.FragmentManager;
-    import android.support.v4.app.FragmentPagerAdapter;
-    
-    
-    /**
-     * @author fyales
-     */
-    public class TabViewPagerAdapter extends FragmentPagerAdapter {
-    
-        private final int PAGE_COUNT = 3;
-    
-    
-        private String mTabTitle[] = new String[]{"朝代","人物","战争"};
-        private Context mContext;
-    
-        public TabViewPagerAdapter(FragmentManager fm, Context context) {
-            super(fm);
-            this.mContext = context;
-        }
-    
-        @Override
-        public Fragment getItem(int position) {
-    
-            return BaseFragment.newInstance(position);
-        }
-    
-        @Override
-        public int getCount() {
-            return PAGE_COUNT;
-        }
-    
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return  mTabTitle[position];
-        }
-    }
-    
-```
+	package com.fyales.slidetablayout;
+
+	import android.content.Context;
+	import android.support.v4.app.Fragment;
+	import android.support.v4.app.FragmentManager;
+	import android.support.v4.app.FragmentPagerAdapter;
+
+	/**
+ 	* 简单实例
+ 	* @author fyales
+ 	*/
+	public class TabViewPagerAdapter extends FragmentPagerAdapter {
+
+    	private String mTabTitle[] = new String[]{"朝代", "人物", "战争"};
+    	private Context mContext;
+
+    	public TabViewPagerAdapter(FragmentManager fm, Context context) {
+        	super(fm);
+        	this.mContext = context;
+   	 }
+
+    	@Override
+    	public Fragment getItem(int position) {
+        	return null;
+   	 }
+
+    	@Override
+    	public int getCount() {
+       	 return 3;
+    	}
+
+    	@Override
+    	public CharSequence getPageTitle(int position) {
+        	return mTabTitle[position];
+    	}
+	}
 
     
 最后我们就可以在MainActivity.java中直接使用了
 
-``` java
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -142,14 +134,13 @@ Google官方推出了许多扩展的UI公共组件库，在这里，我们介绍
         // slidingTabLayout.setDistributeEvenly(true); 是否填充满屏幕的宽度
         slidingTabLayout.setViewPager(viewPager);
     }
-    
-```
+
     
     
 ### 自定义样式和自定义下划线颜色
 SlidingTabLayout同样有一些自定义的方法供你使用，你可以定义下划线的颜色或者自定义样式，通过以下方法调用
 
-``` java
+
 
         //自定义下划线颜色
         slidingTabLayout.setCustomTabColorizer(new SlidingTabLayout.TabColorizer(){
@@ -161,5 +152,4 @@ SlidingTabLayout同样有一些自定义的方法供你使用，你可以定义�
         
         //自定义展示样式
         slidingTabLayout.setCustomTabView(R.layout.your_custom_tab, 0);
-        
-```
+
